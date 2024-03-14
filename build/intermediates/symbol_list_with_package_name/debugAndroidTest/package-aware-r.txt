@@ -1,3 +1,0 @@
-com.example.lab_01.test
-style WhiteBackgroundDialogTheme
-style WhiteBackgroundTheme
