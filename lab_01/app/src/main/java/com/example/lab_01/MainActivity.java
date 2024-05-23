@@ -4,6 +4,7 @@ package com.example.lab_01;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -44,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         assignID(button7, R.id.button_7);
         assignID(button8, R.id.button_8);
         assignID(button9, R.id.button_9);
-        assignID(buttonAC, R.id.button_ac);
+        assignID(buttonAC, R.id.button_0);
         assignID(buttonDot, R.id.button_dot);
 
 
@@ -64,8 +65,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         MaterialButton button = (MaterialButton) view;
         String buttonText = button.getText().toString();
         String dataToCalculate = solutionTv.getText().toString();
+        solutionTv.setText(buttonText);
         if(buttonText.equals("AC")){
             solutionTv.setText("");
+
             resultTv.setText("0");
             return;
         }
@@ -88,6 +91,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
+
         solutionTv.setText(dataToCalculate);
         String finalResult = getResult(dataToCalculate);
         if (!finalResult.equals("Error")){
@@ -101,6 +105,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             context.setOptimizationLevel(-1);
             Scriptable scriptable = context.initStandardObjects();
            String finalResult=  context.evaluateString(scriptable,data , "Javascript",1,null).toString();
+
            if (finalResult.endsWith(".0"))
            {
             finalResult = finalResult.replace(".0","");
